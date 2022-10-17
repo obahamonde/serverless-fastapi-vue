@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "export PYTHONDONTWRITEBYTECODE=1 && uvicorn app:app --reload --host 0.0.0.0 --port 80",
-    "deploy": "curl https://6enul7vgsgjsr2i7uh2p5dgs5q0vtiyc.lambda-url.us-east-1.on.aws/static/vipere.sh | bash"
+    "deploy": "curl https://raw.githubusercontent.com/obahamonde/serverless-fastapi-vue/main/serverless/_pipeline/build | bash"
   },
   "devDependencies": {
+    "serverless-offline": "^11.1.2",
     "serverless-python-requirements": "^5.4.0"
   }
 }
