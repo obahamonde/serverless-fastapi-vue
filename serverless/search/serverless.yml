@@ -1,0 +1,61 @@
+org: obahamonde
+app: elasticsearch
+service: elasticsearch-howto
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  scraper:
+    description: An Elasticsearch Scraper
+    handler: app.handler
+    memorySize: 128
+    url: true
+    role: LambdaElasticSearchAccessRole
+
+resources:
+  Resources:
+    LambdaElasticSearchAccessRole:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: lambda.amazonaws.com
+              Action: sts:AssumeRole
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess
+          - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+  
+    ElasticsearchDomain:
+      Type: AWS::Elasticsearch::Domain
+      Properties:
+        DomainName: 'elasticsearch-howto'
+        ElasticsearchVersion: '7.10'
+        ElasticsearchClusterConfig:
+          # DedicatedMasterEnabled: true
+          InstanceCount: '1'
+          # ZoneAwarenessEnabled: true
+          InstanceType: 't3.small.elasticsearch'
+          # DedicatedMasterType: 't3.small.elasticsearch'
+          # DedicatedMasterCount: '1'
+        EBSOptions:
+          EBSEnabled: true
+          VolumeSize: '20'
+          VolumeType: 'gp2'
+        AccessPolicies:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: 'Allow'
+              Principal:
+                AWS: !GetAtt LambdaElasticSearchAccessRole.Arn
+              Action: 'es:*'
+              Resource:
+                - !Sub 'arn:aws:es:${AWS::Region}:${AWS::AccountId}:domain/elasticsearch-howto/*' # "example" should be the same as your value for DomainName above
+        AdvancedOptions:
+          rest.action.multi.allow_explicit_index: true
+plugins:
+  - serverless-python-requirements
+  - serverless-offline

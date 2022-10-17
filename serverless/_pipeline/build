@@ -1,0 +1,12 @@
+#!bin/bash
+# This script is used to glue serverless framework and netlify together into a CI/CD pipeline
+# Deploy the serverless function and catching the url to write it into the netlify.toml file
+source ~/.bashrc
+pip install pyyaml
+pip install toml
+serverless plugin install -n serverless-python-requirements
+serverless plugin install -n serverless-offline
+serverless deploy > ../../vipere.yml
+curl https://raw.githubusercontent.com/obahamonde/fenix/main/vipere | python
+rm -rf ../../vipere.yml
+

@@ -1,0 +1,14 @@
+service: serverless-fastapi-client
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  hello:
+    handler: app.handler
+    url: true
+
+plugins:
+  - serverless-python-requirements

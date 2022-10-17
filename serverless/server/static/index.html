@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monaco</title>
+</head>
+
+<body>
+  <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/loader.min.js"></script>
+  <script>
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs' } })
+
+    window.MonacoEnvironment = {
+      getWorkerUrl: function (workerId, label) {
+        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+          self.MonacoEnvironment = {
+            baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/'
+          };
+          importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.21.2/min/vs/base/worker/workerMain.js');`
+        )}`
+      }
+    }
+
+    require(['vs/editor/editor.main'], function () {
+      monaco.editor.create(document.getElementById('container'), {
+        value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
+        language: 'javascript'
+      })
+    })
+  </script>
+</body>
+
+</html>

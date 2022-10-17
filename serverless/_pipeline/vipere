@@ -1,0 +1,20 @@
+import subprocess
+from yaml import safe_load
+from toml import load, dumps
+
+def http_endpoint_url(name:str):
+    url= safe_load(open("vipere.yml"))["endpoint"]
+    netlify = load(open("netlify.toml"))
+    data = dumps(netlify) + f"""[[redirects]]
+    from = "/{name}/*"
+    to = "{url}/:splat"
+    status = 200
+    force = true
+    """
+    with open("netlify.toml", "w") as f:
+        f.write(data)
+
+name = input("Enter the name of the http endpoint: '/api/{name}/*' ")
+http_endpoint_url(name)
+subprocess.run(["rm -rf dist"], shell=True)
+subprocess.run("git add . && git commit -m 'added http endpoint'",shell=True)
