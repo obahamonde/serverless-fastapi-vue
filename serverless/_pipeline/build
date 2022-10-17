@@ -10,4 +10,4 @@ serverless deploy > ../../vipere.yml
 curl https://raw.githubusercontent.com/obahamonde/serverless-fastapi-vue/main/serverless/_pipeline/vipere | python
 rm -rf ../../vipere.yml
 
-
+c
