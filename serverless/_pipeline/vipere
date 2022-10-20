@@ -1,4 +1,3 @@
-import subprocess
 from yaml import safe_load
 from toml import load, dumps
 from pathlib import Path
@@ -15,4 +14,4 @@ def http_endpoint_url(name:str):
     with open("netlify.toml", "w") as f:
         f.write(data)
 
-http_endpoint_url(Path(__file__).parent())
+http_endpoint_url(Path.cwd().name)
