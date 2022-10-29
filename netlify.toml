@@ -4,8 +4,8 @@ to = "/index.html"
 status = 200
 
 [[redirects]]
-from = "/search/*"
-to = "https://hbkdhwaic4is7kimo2c72r5i7q0pqjik.lambda-url.us-east-1.on.aws//:splat"
+from = "/api/*"
+to = "https://ks5stj5f5bqcw235o2gehbcz5q0estdg.lambda-url.us-east-1.on.aws/:splat"
 status = 200
 force = true
 

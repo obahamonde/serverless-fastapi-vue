@@ -1,0 +1,20 @@
+app: elasticsearch
+service: elasticsearch
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  elasticsearch:
+    handler: app.handler
+    layers:
+    - Ref: PythonRequirementsLambdaLayer
+    url: true
+plugins:
+  - serverless-python-requirements  
+custom:
+  pythonRequirements:
+    slim: true
+    layer: true

@@ -5,10 +5,10 @@ const { isAuthenticated, user } = useAuth0();
 const { setState } = useState();
 setState("user", user);
 const customer = reactive({
-  brand: "Boilerplate",
-  logo: "/logo.svg",
-  cta: "⚡The Best Cloud is no Cloud",
-  slug: "☁️ Deliver value faster the Full-Stack Serverless starter kit.",
+  brand: "CloudScraper",
+  logo: "/logo.png",
+  cta: "⚡ Lightning Fast Web Scraping",
+  slug: "☁️ Powered by",
 });
 const foo = ref(true);
 useTitle("Home");
@@ -16,6 +16,8 @@ useTitle("Home");
 <template>
   <div v-if="isAuthenticated" class="col center">
     <Nav />
+    <ElasticSearch/>
+    <Search/> 
     <Dock />
   </div>
   <div v-else h-screen w-screen col center>
@@ -25,6 +27,7 @@ useTitle("Home");
       :logo="customer.logo"
       :cta="customer.cta"
       :slug="customer.slug"
+      icon="logos:elasticsearch"
       v-if="foo"
     />
   </div>

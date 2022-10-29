@@ -1,10 +1,10 @@
 <script setup lang="ts">
 useHead({
-  title: "Vipere",
+  title: "Cloud Scraper",
   meta: [
     {
       name: "description",
-      content: "Starter for web development with Vite and Python",
+      content: "Web Scraping API made with Vue 3, FastAPI, AWS Lambda and ElasticSearch",
     },
   ],
   link: [

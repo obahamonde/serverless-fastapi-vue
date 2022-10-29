@@ -6,14 +6,14 @@ const router = useRouter();
 </script>
 <template>
   <nav
-    class="row center rou bl fixed w-full h-16 bg-success animate-fade-in-up"
+    class="row center rou bl fixed w-full h-16 bg-secondary animate-fade-in-up"
     v-if="isAuthenticated"
   >
     <div
       :class="
         show
-          ? 'h-32 w-32 rounded-b rounded-full translate-y--8 bg-success col center'
-          : 'h-32 w-32 rounded-full translate-y--8 bg-success col center'
+          ? 'h-32 w-32 rounded-b rounded-full translate-y--8 bg-secondary col center'
+          : 'h-32 w-32 rounded-full translate-y--8 bg-secondary col center'
       "
     >
       <img

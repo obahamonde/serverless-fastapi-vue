@@ -7,24 +7,18 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Calendar: typeof import('./components/Calendar.vue')['default']
     Clock: typeof import('./components/Clock.vue')['default']
+    Crawler: typeof import('./components/Crawler.vue')['default']
     Dark: typeof import('./components/Dark.vue')['default']
     Dock: typeof import('./components/Dock.vue')['default']
-    Editor: typeof import('./components/Editor.vue')['default']
+    ElasticSearch: typeof import('./components/ElasticSearch.vue')['default']
     Hero: typeof import('./components/Hero.vue')['default']
-    Html: typeof import('./components/Html.vue')['default']
     Ico: typeof import('./components/Ico.vue')['default']
     Loading: typeof import('./components/Loading.vue')['default']
     Nav: typeof import('./components/Nav.vue')['default']
-    PipSearch: typeof import('./components/PipSearch.vue')['default']
-    Python: typeof import('./components/Python.vue')['default']
-    Rocket: typeof import('./components/Rocket.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Search: typeof import('./components/Search.vue')['default']
     ThreeSlider: typeof import('./components/ThreeSlider.vue')['default']
-    Toast: typeof import('./components/Toast.vue')['default']
-    Upload: typeof import('./components/Upload.vue')['default']
   }
 }

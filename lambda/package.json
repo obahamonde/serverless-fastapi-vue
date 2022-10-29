@@ -1,0 +1,15 @@
+{
+    "name": "function",
+    "version": "1.0.0",
+    "main": "app.py",
+    "license": "MIT",
+    "scripts": {
+        "dev": "export PYTHONDONTWRITEBYTECODE=1 && uvicorn app:app --reload --host 0.0.0.0 --port 80",
+        "deploy": "serverless deploy > deploy.yml && cat deploy.yml | grep -oP '(?<=https://)[^ ]*' > url.txt && rm deploy.yml && cat url.txt"
+    },
+    "devDependencies": {
+        "serverless-offline": "^11.1.3",
+        "serverless-python-requirements": "^6.0.0"
+    },
+    "url": "https://ks5stj5f5bqcw235o2gehbcz5q0estdg.lambda-url.us-east-1.on.aws/"
+}

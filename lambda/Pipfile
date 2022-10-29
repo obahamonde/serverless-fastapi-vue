@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+python-dotenv = "*"
+bs4 = "*"
+aiohttp= "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
+
+[packages.pydantic]
+extras = [ "email",]
+
+[packages.elasticsearch]
+extras = [ "async",]
+
+[scripts]
+dev="uvicorn app:app --reload --port 80 --host 0.0.0.0"

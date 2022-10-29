@@ -4,6 +4,7 @@ const { isAuthenticated } = useAuth0();
 </script>
 
 <template>
+
   <Nav />
   <RouterView />
   <Search />

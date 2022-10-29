@@ -1,8 +1,14 @@
 <template>
-  <button
-    class="icon-btn mx-2 !outline-none tr fixed m-4"
-    @click="toggleDark()"
-  >
-    <div i="carbon-sun dark:carbon-moon" />
-  </button>
+
+    <Ico
+      icon="mdi:lightbulb-on"
+      v-if="isDark"
+      @click="toggleDark()"
+    />
+    <Ico
+      icon="mdi:lightbulb-off-outline"
+      v-else
+      @click="toggleDark()"
+    />
+
 </template>

@@ -41,9 +41,13 @@ const search = () => {
 </script>
 <template>
     <div
-        :class="!toggle ? 'bg-gray-500 p-2 rf tr fixed m-4 mt-12':'z-50 bg-light shadow-lg shadow-gray-500 rounded-xl p-1 tl pt-8 fixed w-75 h-full'">
+        :class="!toggle ? 'bg-gray-500 p-2 rf tr fixed m-4 mt-12':'z-50 bg-light dark:bg-black shadow-lg shadow-gray-500 rounded-xl p-1 tl pt-8 fixed w-75 h-full'">
         <div col center>
-            <div row center border-gray-500 b-2 rounded-xl hover-bg-transparent backdrop-blur-md p-1>
+            <h1 row mb-8 v-if="toggle">
+          <Ico icon="mdi-close" x2 right-2 top-4 cp absolute text-warning hover:text-danger
+                @click="toggle=!toggle; results=[]; input=''"  />
+       
+        </h1><div row center border-gray-500 b-2 rounded-xl hover-bg-transparent backdrop-blur-md p-1>
                 <div i-carbon-search cp scale @click.prevent="toggler"
                     :class="!toggle ? 'text-white p-2 rf':'text-secondary'" />
                 <h1 row v-if="toggle" fade-in-left><input type="search" bg-transparent no-outline text-secondary
@@ -79,8 +83,8 @@ const search = () => {
             </label>
         </div>
         <div v-if="input" col backdrop-blur-lg>
-            <div v-for="r in unref(results)" col>
-                <a :href="r.url" text-xs underline m-2 text-success hover:text->{{ r.summary }}</a>
+            <div v-for="r in unref(results)" col center>
+                <a :href="r.url" text-xs underline m-2 dark:text-success text-info hover:text->{{ r.summary }}</a>
             </div>
             <div row text-secondary cp dark:text-primary center mt-6 v-if="(unref(results).length > 0)">
                 <Ico icon="mdi-chevron-left" text-xl mx-1 text-secondary cp dark:text-primary v-if="page > 0"
